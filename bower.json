@@ -1,0 +1,17 @@
+{
+  "name": "angular-with-typescript",
+  "description": "Pluralsight Angular with TypeScript",
+  "main": "index.js",
+  "authors": [
+    "Carolina Serrão"
+  ],
+  "license": "ISC",
+  "homepage": "https://github.com/ccsCarolSerrao/Angular-with-TypeScript",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

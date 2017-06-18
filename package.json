@@ -1,0 +1,33 @@
+{
+  "name": "angular-with-typescript",
+  "version": "1.0.0",
+  "description": "Pluralsight Angular with TypeScript",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ccsCarolSerrao/Angular-with-TypeScript.git"
+  },
+  "author": "Carolina Serrão",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ccsCarolSerrao/Angular-with-TypeScript/issues"
+  },
+  "homepage": "https://github.com/ccsCarolSerrao/Angular-with-TypeScript#readme",
+  "devDependencies": {
+    "typescript": "^2.3.4"
+  },
+  "dependencies": {
+    "@types/angular": "^1.6.19",
+    "@types/angular-mocks": "^1.5.10",
+    "@types/angular-resource": "^1.5.9",
+    "@types/angular-route": "^1.3.4",
+    "angular": "^1.6.4",
+    "angular-mocks": "^1.6.4",
+    "angular-resource": "^1.6.4",
+    "angular-route": "^1.6.4",
+    "bootstrap": "^3.3.7"
+  }
+}
