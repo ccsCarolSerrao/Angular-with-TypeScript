@@ -3,14 +3,11 @@
     <meta charset="UTF-8">
     <title>Acme Product Management</title>
 
-    <!-- Style sheets -->
-    <link href="../node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
-
-    <!-- Library Scripts -->
-    <script src="../node_modules/angular/angular.min.js"></script>
-    <script src="../node_modules/angular-resource/angular-resource.min.js"></script>
-    <script src="../node_modules/angular-mocks/angular-mocks.js"></script>
-    <script src="../node_modules/angular-route/angular-route.min.js"></script>
+    <!--build:css css/lib.css -->
+    <!-- bower:css -->
+    <link rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap.css" />
+    <!-- endbower -->
+    <!-- endbuild -->
 </head>
 
 <body ng-app="productManagement">
@@ -25,20 +22,33 @@
     <div class="container">
         <ng-view></ng-view>
     </div>
-    
-    <!-- Application Script -->
-    <script src="app/app.js"></script>
-    
-    <!-- Domain Classes -->
-    <script src="app/products/product.js"></script>
 
-    <!-- Services -->
-    <script src="app/common/services/common.services.js"></script>
-    <script src="app/common/services/dataAccessService.js"></script>
-    <script src="app/common/services/productResourceMock.js"></script>
+    
 
-    <!-- Controllers -->
-    <script src="app/products/productListCtrl.js"></script>
+    <!--build:js js/lib.js -->
+    <!-- bower:js -->
+    <script src="../bower_components/angular/angular.js"></script>
+    <script src="../bower_components/angular-resource/angular-resource.js"></script>
+    <script src="../bower_components/angular-mocks/angular-mocks.js"></script>
+    <script src="../bower_components/angular-route/angular-route.js"></script>
+    <script src="../bower_components/jquery/dist/jquery.js"></script>
+    <script src="../bower_components/bootstrap/dist/js/bootstrap.js"></script>
+    <!-- endbower -->
+    <!-- endbuild -->
+
+    
+    <!--build:js js/app.js -->
+    <!-- inject:js -->
+    <script src="/src/app/app.js"></script>
+    <script src="/src/app/products/product.js"></script>
+    <script src="/src/app/products/productDetailCtrl.js"></script>
+    <script src="/src/app/products/productListCtrl.js"></script>
+    <script src="/src/app/common/services/common.services.js"></script>
+    <script src="/src/app/common/services/dataAccessService.js"></script>
+    <script src="/src/app/common/services/productResourceMock.js"></script>
+    <!-- endinject -->
+    <!-- endbuild -->
+    
 </body>
 
 </html>

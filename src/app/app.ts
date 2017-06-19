@@ -1,3 +1,4 @@
+///<reference path="../../node_modules/@types/angular/index.d.ts"/>
 module app {
 	var main = angular.module("productManagement",
 		 						["ngRoute",

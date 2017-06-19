@@ -5,7 +5,7 @@
   "authors": [
     "Carolina Serrão"
   ],
-  "license": "ISC",
+  "license": "MIT",
   "homepage": "https://github.com/ccsCarolSerrao/Angular-with-TypeScript",
   "ignore": [
     "**/.*",
@@ -13,5 +13,12 @@
     "bower_components",
     "test",
     "tests"
-  ]
+  ],
+  "dependencies": {
+    "angular": "^1.6.4",
+    "angular-resource": "^1.6.4",
+    "angular-mocks": "^1.6.4",
+    "angular-route": "^1.6.4",
+    "bootstrap": "^3.3.7"
+  }
 }
