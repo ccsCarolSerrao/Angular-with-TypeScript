@@ -1,22 +1,38 @@
 var gulp = require('gulp');
 var args = require('yargs').argv;
 var del = require('del');
+var runSequence =  require('run-sequence');
 var config = require('./gulp.config')();
 var $ = require('gulp-load-plugins')({lazy: true});
 
 gulp.task('help', $.taskListing);
 gulp.task('default', ['help']);
 
+gulp.task('build', function(cb){    
+    runSequence('clean-dist','tscompiler','wiredep','optimize','get-html', 'webserver', cb);
+});
 
+gulp.task('webserver', function() {
+    gulp.src(config.dist)
+        .pipe($.webserver({
+            livereload: true,
+            directoryListing: false,
+            open: true,
+            fallback: 'index.html',
+            host: 'localhost',
+            port: '8084',
+            path: '/'
+    }));
+});
 
-gulp.task('server-dist'/*, ['clean-dist','wiredep','optimize']*/, function(){
+gulp.task('get-html', function(){
     return gulp
         .src(config.html)      
         .pipe(gulp.dest(config.distApp)); 
 });
 
 gulp.task('optimize',function(){   
-    log('Optimizing TypeScrip files');
+    log('Optimizing files');
     return gulp
         .src(config.index)        
         .pipe($.useref({
@@ -27,22 +43,10 @@ gulp.task('optimize',function(){
         }))
         .pipe($.if('*.js', $.uglify()))
         .pipe($.if('*.css', $.csso()))        
-        .pipe(gulp.dest(config.dist)); 
+        .pipe(gulp.dest(config.dist));
 });
 
-
-gulp.task('server-dev', ['wiredep'], function(){
-    var nodeOptions ={
-            script: config.app + 'app.js',
-            delayTime: 1,
-            env: {
-                'PORT': 7203,
-                'NODE_ENV': 'dev'
-            }
-        };
-});
-
-gulp.task('wiredep'/*,['tscompiler']*/, function(cb){
+gulp.task('wiredep', function (){ 
     log('Wire up the bower css js and our app js into the html');
     var options = config.getWiredepDefaultOptions();
     var wiredep = require('wiredep').stream;
@@ -53,8 +57,7 @@ gulp.task('wiredep'/*,['tscompiler']*/, function(cb){
         .pipe(gulp.dest(config.src)); 
 });
 
-
-gulp.task('tscompiler', function (cb) {
+gulp.task('tscompiler', function () {
     log('Compalling TypeScrip files');
     return gulp
         .src(config.alljs)
@@ -67,10 +70,14 @@ gulp.task('tscompiler', function (cb) {
         .pipe(gulp.dest(config.app));
 });
 
-
-gulp.task('clean-dist', function(){
+gulp.task('clean-dist', function (cb){
     log('Cleanning js files ' + config.dist);
-    del(config.dist);
+    
+    var fs = require('fs');
+    fs.access(config.dist, fs.constants.R_OK | fs.constants.W_OK, (err) => {
+        err ? log('no files!') : del(config.dist);
+        cb();
+    });
 });
 
 ////////////////////////
