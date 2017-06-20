@@ -5,6 +5,4 @@ Pluralsight Angular with TypeScript
 -----------------------------------------------------------------------------------------------------------------
 
 # Quick Start =)
-npm init
-npm install
-npm run build
+npm init && npm install && npm run build
